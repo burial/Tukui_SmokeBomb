@@ -36,7 +36,7 @@ function mod:ADDON_LOADED(addon)
 end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(unit, spell)
-  if spell == 'Smoke Bomb' and unit == 'player' or unit:sub(0, 5) == 'party' then
+  if spell == 'Smoke Bomb' and (unit == 'player' or unit:sub(0, 5) == 'party') then
     self.cooldown:SetCooldown(GetTime(), 6)
     UIFrameFlash(self, 0.15, 0.15, 6, false, 0.7, 0)
     return true
