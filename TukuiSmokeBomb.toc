@@ -1,0 +1,8 @@
+## Interface: 40200
+## Title: |cffC495DDTukui:|r Smoke Bomb
+## Notes: smoke bomb indicator for tukui
+## Author: burial
+## Version: 1
+## RequiredDeps: Tukui
+
+main.lua
