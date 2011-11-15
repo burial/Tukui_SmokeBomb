@@ -24,7 +24,7 @@ function mod:ADDON_LOADED(addon)
     self.texture:SetTexCoord(.1, .9, .1, .9)
     self.texture:SetPoint('TOPLEFT', self, 'TOPLEFT', 2, -2)
     self.texture:SetPoint('BOTTOMRIGHT', self, 'BOTTOMRIGHT', -2, 2)
-    self.texture:SetTexture(select(3, GetSpellInfo(76577)))
+    self.texture:SetTexture("INTERFACE\\ICONS\\ability_rogue_smoke")
 
     self:SetTemplate()
     self:CreateShadow()
@@ -35,8 +35,17 @@ function mod:ADDON_LOADED(addon)
   end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(unit, spell)
-  if spell == 'Smoke Bomb' and (unit == 'player' or unit:sub(0, 5) == 'party') then
+do
+  local units = {
+    ['player'] = true,
+    ['party1'] = true,
+    ['party2'] = true,
+    ['party3'] = true,
+    ['party4'] = true,
+  }
+
+  function mod:UNIT_SPELLCAST_SUCCEEDED(unit, spell)
+    if spell ~= 'Smoke Bomb' or not units[ unit ] then return end
     self.cooldown:SetCooldown(GetTime(), 6)
     UIFrameFlash(self, 0.15, 0.15, 6, false, 0.7, 0)
     return true
