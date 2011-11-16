@@ -1,5 +1,3 @@
-local T, C, L = unpack(Tukui)
-
 local mod = CreateFrame('frame', 'TukuiSmokeBomb', UIParent)
 mod:SetScript('OnEvent', function(self, event, ...) return self[event](self, ...) end)
 mod:RegisterEvent('ADDON_LOADED')
