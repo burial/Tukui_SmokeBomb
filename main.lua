@@ -1,9 +1,11 @@
-local mod = CreateFrame('frame', 'TukuiSmokeBomb', UIParent)
+local T, C, L = unpack(Tukui)
+
+local mod = CreateFrame('frame', 'Tukui_SmokeBomb', UIParent)
 mod:SetScript('OnEvent', function(self, event, ...) return self[event](self, ...) end)
 mod:RegisterEvent('ADDON_LOADED')
 
 function mod:ADDON_LOADED(addon)
-  if addon == 'TukuiSmokeBomb' then
+  if addon == 'Tukui_SmokeBomb' then
     self:UnregisterEvent('ADDON_LOADED')
     
     self:Hide()
